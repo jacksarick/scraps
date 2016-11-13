@@ -16,7 +16,14 @@ function handler(request, response){
 
 		request.on('end', function() {
 			const token = Math.random().toString(36).substr(2, 12);
-			database[token] = decodeURIComponent(body.replace("content=", "").replace(/\+/g, " "));
+
+			[content, timer] = body.split("&");
+			content = decodeURIComponent(content.replace("content=", "").replace(/\+/g, " "));
+			timer = timer.replace("timer=", "") * 1;
+			
+			console.log(content);
+
+			database[token] = {"content": content, "time": timer};
 
 			response.writeHead(302, {'Location': "/f/" + token});
 			response.end("Success!");
@@ -37,7 +44,14 @@ function handler(request, response){
 			default:
 				if (/\/f\/.+/.test(request.url)) {
 					const title = request.url.split("/")[2];
-					response.end(compose("text-file.html", {"title": title, "content": database[title], "timer": "1 week"}));
+					if (database[title] != undefined) {
+						response.end(compose("text-file.html", {"title": title, "content": database[title]["content"], "timer": database[title]["time"]}));
+					}
+
+					else {
+						response.writeHead(404, {'Content-Type': 'text/html'});
+						response.end(compose("404.html", {"file": title}));
+					}
 
 				}
 
