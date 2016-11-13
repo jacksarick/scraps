@@ -1,0 +1,20 @@
+{
+  "name": "beachball",
+  "version": "1.0.0",
+  "description": "Like pastebin, but expiries are based on visits",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js",
+    "start-dev": "nodemon app.js --use-strict",
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jacksarick/beachball.git"
+  },
+  "author": "Jack Sarick",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/jacksarick/beachball/issues"
+  },
+  "homepage": "https://github.com/jacksarick/beachball#readme"
+}
