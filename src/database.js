@@ -35,11 +35,26 @@ function database(rootdir) {
 			}
 		},
 
-		save: function() {
+		save: function(content, expiry) {
 			const token = Math.random().toString(36).substr(2, 12);
+			const now = Math.floor(Date.now() / 1000);
+
+			const body = expiry + "\n---\n" + now + "\n---\n" + content;
+
+			try {
+				fs.writeFileSync(rootdir + token, body, 'utf8', {flags: 'wx+'});
+				return token;
+			}
+
+			catch (err) {
+				console.log(err);
+				return undefined;
+			}
 		},
 
-		load: function() {}
+		load: function() {
+
+		}
 	}
 	
 	return filesystem;

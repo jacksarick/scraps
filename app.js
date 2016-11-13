@@ -4,6 +4,11 @@ const PORT = 8080;
 const compose  = require("./src/page-builder.js")(__dirname + "/pages/");
 const database = require("./src/database.js")(__dirname + "/db/"); 
 
+function file_not_found(res, file) {
+	res.writeHead(404, {'Content-Type': 'text/html'});
+	res.end(compose("404.html", {"file": file}));
+}
+
 function handler(request, response){
 	
 	if (request.method == "POST") {
@@ -16,12 +21,18 @@ function handler(request, response){
 		request.on('end', function() {
 
 			[content, timer] = body.split("&");
-			content = decodeURIComponent(content.replace("content=", "").replace(/\+/g, " "));
-			timer = timer.replace("timer=", "") * 1;
-			const location = save_content(content, timer);
+			content = decodeURIComponent(content.replace("content=", "").replace("+", " "));
+			timer = timer.replace("timer=", "") * 60 * 60;
+			const location = database.save(content, timer);
 			
-			response.writeHead(302, {'Location': "/f/" + token});
-			response.end("Success!");
+			if (location){
+				response.writeHead(302, {'Location': "/f/" + location});
+				response.end("Success!");
+			}
+
+			else {
+				response.end(compose("generic.html", {"title": "Uh Oh!", "content": "Something went wrong :("}));
+			}
 		});
 	}
 
@@ -44,8 +55,7 @@ function handler(request, response){
 					}
 
 					else {
-						response.writeHead(404, {'Content-Type': 'text/html'});
-						response.end(compose("404.html", {"file": title}));
+						file_not_found(response, title);
 					}
 
 				}
@@ -57,15 +67,13 @@ function handler(request, response){
 					}
 
 					else {
-						response.writeHead(404, {'Content-Type': 'text/html'});
-						response.end(compose("404.html", {"file": token}));
+						file_not_found(response, token);
 					}
 
 				}
 
 				else {
-					response.writeHead(404, {'Content-Type': 'text/html'});
-					response.end(compose("404.html", {"file": request.url}));
+					file_not_found(response, request.url);
 				}
 				break;
 		}
