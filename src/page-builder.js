@@ -23,7 +23,7 @@ function generator(rootdir) {
 
 		catch(err) {
 			console.log("Couldn't find/access " + filename + " from " + rootdir);
-			return "404 file not found";
+			return compose("404.html", {"file": filename});
 		}
 	}
 

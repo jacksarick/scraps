@@ -9,9 +9,12 @@
 		<!-- Main segment -->
 		<h1>New text file:</h1>
 		<pre id="user-input" contenteditable autofocus>
-Write all of your stuff here
+All of your content can go here!
 		</pre>
-		<button id="submit">Create</button>
+		<form method="POST" action="/create">
+			<input id="content" type="text" name="content" value="" style="display: none;">
+			<input id="submit" type="submit" value="Create">
+		</form>
 
 		<!-- Scripts -->
 		<script type="text/javascript">
@@ -19,11 +22,11 @@ Write all of your stuff here
 				$("#user-input").$.focus();
 
 				function submit() {
-					console.log($("#user-input").html());
+					$("#content").value($("#user-input").html());
 				}
 
 				$("#submit").listen("click", submit);
-			};
+			}
 		</script>
 	</body>
 </html>
