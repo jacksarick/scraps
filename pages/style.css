@@ -1,0 +1,29 @@
+/* Basic CSS stylesheet from https://gist.github.com/jacksarick/9fab0439a0b5a043cf461f616195cd84 */
+
+body {
+	margin: 0 auto;
+	max-width: 50em;
+	line-height: 1.5;
+	padding: 4em 1em;
+	color: #555;
+	font-family: "Helvetica", "Arial", sans-serif;
+	margin-top: 1em;
+	padding-top: 1em;
+}
+
+h1, h2, strong {
+	color: #333;
+}
+
+code, pre {
+	background: #eee;
+}
+
+code {
+	padding: 2px 4px;
+	vertical-align: text-bottom;
+}
+
+pre {
+	padding: 1em;
+}
