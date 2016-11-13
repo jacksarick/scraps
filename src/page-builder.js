@@ -1,24 +1,31 @@
 const fs = require("fs");
 
-function load_file(match, string) {
-	try {
-		return fs.readFileSync(string, 'utf8');
+function generator(rootdir) {
+	// Make a function to load a file
+	const load_file = function(_, string) {
+		try {
+			return fs.readFileSync(rootdir + string, 'utf8');
+		}
+
+		catch (err) {
+			console.log("Couldn't load " + string + " in " + rootdir);
+			return "";
+		}
 	}
 
-	catch (err) {
-		""
+	// The generator function that loads files from root dir
+	return function (filename, substitutions) {
+		try {
+			return fs.readFileSync(rootdir + filename, 'utf8')
+			.replace(/<<<([^>]+)>>>/g, load_file)
+			.replace(/{{{([^\}]+)}}}/g, function(_, string) { return substitutions[string] });
+		}
+
+		catch(err) {
+			console.log("Couldn't find/access " + filename + " in " + rootdir);
+			return "404 file not found";
+		}
 	}
 }
 
-function main(filename, substitutions) {
-	try {
-		return fs.readFileSync(filename, 'utf8').replace(/<<<([^>]+)>>>/g, load_file).replace(/{{{([^\}]+)}}}/g, function(match) { return substitutions[match] });
-	}
-
-	catch(err) {
-		console.log("Couldn't find/access " + filename);
-		return "404 file not found";
-	}
-}
-
-module.exports = main;
+module.exports = generator;
