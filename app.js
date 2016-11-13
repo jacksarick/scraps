@@ -1,8 +1,8 @@
 var   http = require('http');
 const PORT = 8080;
 
-const compose = require("./src/page-builder.js")(__dirname + "/pages/");
-const databae = require("./src/database.js")(__dirname + "/db/"); 
+const compose  = require("./src/page-builder.js")(__dirname + "/pages/");
+const database = require("./src/database.js")(__dirname + "/db/"); 
 
 function handler(request, response){
 	
@@ -46,6 +46,19 @@ function handler(request, response){
 					else {
 						response.writeHead(404, {'Content-Type': 'text/html'});
 						response.end(compose("404.html", {"file": title}));
+					}
+
+				}
+
+				if (/\/f\?\/.+/.test(request.url)) {
+					const token = request.url.split("/")[2];
+					if (database.check(token)) {
+						response.end(compose("text-file.html", {"content": "testing"}));
+					}
+
+					else {
+						response.writeHead(404, {'Content-Type': 'text/html'});
+						response.end(compose("404.html", {"file": token}));
 					}
 
 				}
