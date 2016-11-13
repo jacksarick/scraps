@@ -12,6 +12,9 @@ function handler(request, response){
 			response.end(compose("index.html"));
 			break;
 
+		case "/new":
+			response.end(compose("new.html"));
+
 		default:
 			response.writeHead(404, {'Content-Type': 'text/html'});
 			response.end(compose("404.html", {"file": request.url}));

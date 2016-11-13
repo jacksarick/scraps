@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Index</title>
+
+		<<< includes/header.html >>>
+	</head>
+	<body>
+		<!-- Main segment -->
+		<h1>New text file:</h1>
+		<pre id="user-input" contenteditable autofocus>
+Write all of your stuff here
+		</pre>
+		<button id="submit">Create</button>
+
+		<!-- Scripts -->
+		<script type="text/javascript">
+			window.onload = function() {
+				$("#user-input").$.focus();
+
+				function submit() {
+					console.log($("#user-input").html());
+				}
+
+				$("#submit").listen("click", submit);
+			};
+		</script>
+	</body>
+</html>

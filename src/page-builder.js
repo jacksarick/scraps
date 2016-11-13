@@ -8,7 +8,7 @@ function generator(rootdir) {
 		}
 
 		catch (err) {
-			console.log("Couldn't load " + string + " in " + rootdir);
+			console.log("Couldn't load " + string + " from " + rootdir);
 			return "";
 		}
 	}
@@ -22,7 +22,7 @@ function generator(rootdir) {
 		}
 
 		catch(err) {
-			console.log("Couldn't find/access " + filename + " in " + rootdir);
+			console.log("Couldn't find/access " + filename + " from " + rootdir);
 			return "404 file not found";
 		}
 	}
