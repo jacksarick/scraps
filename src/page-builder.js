@@ -4,7 +4,7 @@ function generator(rootdir) {
 	// Make a function to load a file
 	const load_file = function(_, string) {
 		try {
-			return fs.readFileSync(rootdir + string.trim(), 'utf8');
+			return compose(string.trim(), 'utf8');
 		}
 
 		catch (err) {
@@ -14,7 +14,7 @@ function generator(rootdir) {
 	}
 
 	// The generator function that loads files from root dir
-	return function (filename, substitutions) {
+	const compose = function (filename, substitutions) {
 		try {
 			return fs.readFileSync(rootdir + filename.trim(), 'utf8')
 			.replace(/<<<([^>]+)>>>/g, load_file)
@@ -26,6 +26,8 @@ function generator(rootdir) {
 			return "404 file not found";
 		}
 	}
+
+	return compose;
 }
 
 module.exports = generator;
