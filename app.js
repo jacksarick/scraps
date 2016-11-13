@@ -1,9 +1,8 @@
 var   http = require('http');
 const PORT = 8080;
 
-var compose = require("./src/page-builder.js")(__dirname + "/pages/");
-
-var database = {};
+const compose = require("./src/page-builder.js")(__dirname + "/pages/");
+const databae = require("./src/database.js")(__dirname + "/db/"); 
 
 function handler(request, response){
 	
@@ -15,16 +14,12 @@ function handler(request, response){
 		});
 
 		request.on('end', function() {
-			const token = Math.random().toString(36).substr(2, 12);
 
 			[content, timer] = body.split("&");
 			content = decodeURIComponent(content.replace("content=", "").replace(/\+/g, " "));
 			timer = timer.replace("timer=", "") * 1;
+			const location = save_content(content, timer);
 			
-			console.log(content);
-
-			database[token] = {"content": content, "time": timer};
-
 			response.writeHead(302, {'Location': "/f/" + token});
 			response.end("Success!");
 		});
