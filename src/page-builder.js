@@ -4,7 +4,7 @@ function generator(rootdir) {
 	// Make a function to load a file
 	const load_file = function(_, string) {
 		try {
-			return fs.readFileSync(rootdir + string, 'utf8');
+			return fs.readFileSync(rootdir + string.trim(), 'utf8');
 		}
 
 		catch (err) {
@@ -16,9 +16,9 @@ function generator(rootdir) {
 	// The generator function that loads files from root dir
 	return function (filename, substitutions) {
 		try {
-			return fs.readFileSync(rootdir + filename, 'utf8')
+			return fs.readFileSync(rootdir + filename.trim(), 'utf8')
 			.replace(/<<<([^>]+)>>>/g, load_file)
-			.replace(/{{{([^\}]+)}}}/g, function(_, string) { return substitutions[string] });
+			.replace(/{{{([^\}]+)}}}/g, function(_, string) { return substitutions[string.trim()] });
 		}
 
 		catch(err) {
