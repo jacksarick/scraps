@@ -1,15 +1,3 @@
-// [content, timer] = body.split("&");
-// content = decodeURIComponent(content.replace("content=", "").replace(/\+/g, " "));
-// timer = timer.replace("timer=", "") * 1;
-// const location = save_content(content, timer);
-
-// console.log(content);
-
-// database[token] = {"content": content, "time": timer};
-
-// response.writeHead(302, {'Location': "/f/" + token});
-// response.end("Success!");
-
 const fs = require("fs");
 
 function database(rootdir) {
@@ -18,7 +6,8 @@ function database(rootdir) {
 		check: function(token) {
 			try {
 				const file = fs.readFileSync(rootdir + token, 'utf8');
-				[date, expiry] = file.split("---");
+				[expiry, date] = file.split("---");
+				[expiry, date] = [expiry.trim() * 1, date.trim() * 1];
 				
 				const now = Math.floor(Date.now() / 1000);
 
@@ -36,7 +25,7 @@ function database(rootdir) {
 		},
 
 		save: function(content, expiry) {
-			const token = Math.random().toString(36).substr(2, 12);
+			const token = Math.random().toString(36).substr(2, 8);
 			const now = Math.floor(Date.now() / 1000);
 
 			const body = expiry + "\n---\n" + now + "\n---\n" + content;
@@ -52,8 +41,11 @@ function database(rootdir) {
 			}
 		},
 
-		load: function() {
-
+		load: function(token) {
+			const file = fs.readFileSync(rootdir + token, 'utf8');
+			[expiry, date, content] = file.split("---");
+			const args = {"title": token.trim(), "content": content.trim(), "timer": expiry.trim() / (60 * 60)};
+			return args;
 		}
 	}
 	

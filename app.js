@@ -21,7 +21,7 @@ function handler(request, response){
 		request.on('end', function() {
 
 			[content, timer] = body.split("&");
-			content = decodeURIComponent(content.replace("content=", "").replace("+", " "));
+			content = decodeURIComponent(content.replace("content=", "").replace(/\+/g, " "));
 			timer = timer.replace("timer=", "") * 60 * 60;
 			const location = database.save(content, timer);
 			
@@ -49,13 +49,17 @@ function handler(request, response){
 
 			default:
 				if (/\/f\/.+/.test(request.url)) {
-					const title = request.url.split("/")[2];
-					if (database[title] != undefined) {
-						response.end(compose("text-file.html", {"title": title, "content": database[title]["content"], "timer": database[title]["time"]}));
+					const token = request.url.split("/")[2];
+					if (database.check(token)) {
+						const file = database.load(token);
+						if (file) {
+							response.end(compose("text-file.html", file));
+
+						}
 					}
 
 					else {
-						file_not_found(response, title);
+						file_not_found(response, token);
 					}
 
 				}
@@ -63,7 +67,7 @@ function handler(request, response){
 				if (/\/f\?\/.+/.test(request.url)) {
 					const token = request.url.split("/")[2];
 					if (database.check(token)) {
-						response.end(compose("text-file.html", {"content": "testing"}));
+						response.end(compose("generic.html", {"title": token, "content": "testing"}));
 					}
 
 					else {
@@ -75,6 +79,7 @@ function handler(request, response){
 				else {
 					file_not_found(response, request.url);
 				}
+
 				break;
 		}
 	}
