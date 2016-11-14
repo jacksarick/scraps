@@ -1,6 +1,6 @@
 const config = require("./config.json");
 
-var   http = require('http');
+const http = require('http');
 const PORT = config.port;
 
 const compose  = require("./src/page-builder.js")(config.page_root);
