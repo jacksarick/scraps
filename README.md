@@ -7,9 +7,10 @@ Like pastebin, but expiries are based on visits. Say you set expiry to one hour,
 Setup is dead simple.
 
 ```bash
-git clone https://github.com/jacksarick/beachball.git
-cd beachball
-npm start
+git clone https://github.com/jacksarick/beachball.git # clone the repo
+cd beachball # go to the folder
+mkdir db # the the database directory
+npm start # start the server
 ```
 
 Boom. Done. Your server is now up, running, and fully configured at <http://localhost:8080>
