@@ -23,7 +23,8 @@ function handler(request, response){
 		request.on('end', function() {
 
 			[content, timer] = body.split("&");
-			content = decodeURIComponent(content.replace("content=", "").replace(/\+/g, " "));
+			content = content.replace("content=", "").replace(/\+/g, " ");
+			content = decodeURIComponent(content);
 			timer = timer.replace("timer=", "") * 60 * 60;
 			const location = database.save(content, timer);
 			
@@ -33,7 +34,12 @@ function handler(request, response){
 			}
 
 			else {
-				response.end(compose("generic.html", {"title": "Uh Oh!", "content": "Something went wrong :("}));
+				const content = {
+					"title": "Uh Oh!",
+					"content": "Something went wrong :("
+				};
+
+				response.end(compose("generic.html", content));
 			}
 		});
 	}
@@ -70,7 +76,12 @@ function handler(request, response){
 					const token = request.url.split("/")[2];
 					const check = database.check(token);
 					if (check) {
-						response.end(compose("generic.html", {"title": token, "content": `Expires in ${check} hour`}));
+						const content = {
+							"title": token,
+							"content": `Expires in ${check} hour`
+						};
+
+						response.end(compose("generic.html", content));
 					}
 
 					else {

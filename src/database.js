@@ -44,7 +44,17 @@ function database(rootdir) {
 		load: function(token) {
 			const file = fs.readFileSync(rootdir + token, 'utf8');
 			[expiry, date, content] = file.split("---");
-			const args = {"title": token.trim(), "content": content.trim(), "timer": expiry.trim() / (60 * 60)};
+
+			const now = Math.floor(Date.now() / 1000);
+			const body = expiry + "\n---\n" + now + "\n---\n" + content;
+			fs.writeFileSync(rootdir + token, body, 'utf8', {flags: 'wx+'});
+
+			const args = {
+				"title": token.trim(),
+				"content": content.trim(),
+				"timer": expiry.trim() / (60 * 60)
+			};
+			
 			return args;
 		}
 	}
