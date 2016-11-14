@@ -2,7 +2,7 @@
 
 Like pastebin, but expiries are based on visits. Say you set expiry to one hour, if no one visits it within an hour, then it goes away. But every time someone visits it, that hour gets renewed. Perfect for all those times a sensitive chunk of text needs to get passed around, but it's hard to co-ordinate exact times.
 
-# Setup
+## Setup
 
 Setup is dead simple.
 
@@ -14,7 +14,7 @@ npm start
 
 Boom. Done. Your server is now up, running, and fully configured at <http://localhost:8080>
 
-When you make some changes and want to see if your general layout works, run `npm test`. It won't check everything, but it should cover some basics.
+When you make some changes and want to see if your general layout works, run `npm test`. It won't check everything, but it should cover some basics. Yes, I wrote the test in TCL, it's a good language.
 
 ## Customizing
 To change the port, the location of stored text files, or the location of webpages, edit `config.json` as you see fit. If you don't like my pages (I'm not exactly a designer, I know), go to the `pages` directory and edit whatever you like. You'll notice a big difference: The server can't handle file requests. No including css files via requests. In exchange, I've implemented an include system. Any file in `<<< >>>` will be "imported". For example:
@@ -69,4 +69,4 @@ Which would output:
 </div>
 ```
 
-The whole system is designed to be mostly painless an intuitive on the surface. To make any actual changes will require actual code. Sorry.
+The whole system is designed to be mostly painless an intuitive on the surface. To make any actual changes will require actual code. Sorry. 
