@@ -68,7 +68,7 @@ function handler(request, response){
 					const token = request.url.split("/")[2];
 					const check = database.check(token);
 					if (check) {
-						response.end(compose("generic.html", {"title": token, "content": `Expires in ${check}`}));
+						response.end(compose("generic.html", {"title": token, "content": `Expires in ${check} hour`}));
 					}
 
 					else {

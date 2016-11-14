@@ -16,7 +16,7 @@ function database(rootdir) {
 					return false;
 				}
 
-				return expiry;
+				return expiry / (60 * 60);
 			}
 
 			catch(err) {
