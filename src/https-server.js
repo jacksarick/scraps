@@ -10,7 +10,7 @@ function server_generator(handler) {
 		cert: fs.readFileSync(config.ssl.cert)
 	};
 
-	return server = tls.createServer(options, (handler).listen(PORT, function(){
+	return server = tls.createServer(options, handler).listen(PORT, function(){
 		console.log("Listening on: http://localhost:" + PORT);
 	});
 }
