@@ -1,8 +1,10 @@
-var   http = require('http');
-const PORT = 8080;
+const config = require("./config.json");
 
-const compose  = require("./src/page-builder.js")(__dirname + "/pages/");
-const database = require("./src/database.js")(__dirname + "/db/"); 
+var   http = require('http');
+const PORT = config.port;
+
+const compose  = require("./src/page-builder.js")(config.page_root);
+const database = require("./src/database.js")(config.database_root); 
 
 function file_not_found(res, file) {
 	res.writeHead(404, {'Content-Type': 'text/html'});

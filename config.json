@@ -1,0 +1,5 @@
+{
+	"port": 8080,
+	"page_root": "./pages/",
+	"database_root": "./db/"
+}
