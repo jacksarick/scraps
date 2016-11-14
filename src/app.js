@@ -1,17 +1,14 @@
-const config = require("./config.json");
+const config = require("../config.json");
 
-const http = require('http');
-const PORT = config.port;
-
-const compose  = require("./src/page-builder.js")(config.page_root);
-const database = require("./src/database.js")(config.database_root); 
+const compose  = require("./page-builder.js")(config.page_root);
+const database = require("./database.js")(config.database_root); 
 
 function file_not_found(res, file) {
 	res.writeHead(404, {'Content-Type': 'text/html'});
 	res.end(compose("404.html", {"file": file}));
 }
 
-function handler(request, response){
+function app(request, response){
 	
 	if (request.method == "POST") {
 		var body;
@@ -69,7 +66,6 @@ function handler(request, response){
 					else {
 						file_not_found(response, token);
 					}
-
 				}
 
 				if (/\/f\?\/.+/.test(request.url)) {
@@ -87,7 +83,6 @@ function handler(request, response){
 					else {
 						file_not_found(response, token);
 					}
-
 				}
 
 				else {
@@ -99,8 +94,4 @@ function handler(request, response){
 	}
 }
 
-var server = http.createServer(handler);
-
-server.listen(PORT, function(){
-	console.log("Listening on: http://localhost:" + PORT);
-});
+module.exports = app

@@ -4,7 +4,7 @@
   "description": "Like pastebin, but expiries are based on visits",
   "main": "app.js",
   "scripts": {
-    "start": "node app.js",
+    "start": "node server.js",
     "test": "/usr/bin/tclsh test.tcl",
     "start-dev": "nodemon app.js --use-strict"
   },
