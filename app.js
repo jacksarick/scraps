@@ -66,8 +66,9 @@ function handler(request, response){
 
 				if (/\/f\?\/.+/.test(request.url)) {
 					const token = request.url.split("/")[2];
-					if (database.check(token)) {
-						response.end(compose("generic.html", {"title": token, "content": "testing"}));
+					const check = database.check(token);
+					if (check) {
+						response.end(compose("generic.html", {"title": token, "content": `Expires in ${check}`}));
 					}
 
 					else {
