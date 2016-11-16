@@ -1,4 +1,5 @@
-const fs = require("fs");
+const fs  = require("fs");
+const log = require("./log.js");
 
 function database(rootdir) {
 	
@@ -36,7 +37,7 @@ function database(rootdir) {
 			}
 
 			catch (err) {
-				console.log(err);
+				log.err("Failed to save file because" + JSON.stringify(err));
 				return undefined;
 			}
 		},

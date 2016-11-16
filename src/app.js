@@ -1,7 +1,7 @@
 const config = require("../config.json");
 
 const compose  = require("./page-builder.js")(config.page_root);
-const database = require("./database.js")(config.database_root); 
+const database = require("./database.js")(config.database_root);
 
 function file_not_found(res, file) {
 	res.writeHead(404, {'Content-Type': 'text/html'});
