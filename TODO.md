@@ -1,4 +1,4 @@
-- [ ] HTTPS
+- [x] HTTPS
 - [ ] Logs
 - [ ] Better page management
 - [ ] More configurable
