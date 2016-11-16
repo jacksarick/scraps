@@ -11,7 +11,7 @@ function server_generator(handler) {
 	};
 
 	return server = tls.createServer(options, handler).listen(PORT, function(){
-		console.log("Listening on: http://localhost:" + PORT);
+		console.log("Listening on: https://localhost:" + PORT);
 	});
 }
 
