@@ -1,5 +1,5 @@
 - [x] HTTPS
-- [ ] Logs
+- [x] Logs
 - [ ] Better page management
 - [ ] More configurable
 - [ ] Test with servers
