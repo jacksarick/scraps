@@ -12,6 +12,8 @@ function file_not_found(res, file) {
 }
 
 function app(request, response){
+
+	const user = request.connection.remoteAddress;
 	
 	if (request.method == "POST") {
 		var body;
@@ -29,6 +31,7 @@ function app(request, response){
 			const location = database.save(content, timer);
 			
 			if (location){
+				log.info(location + " made by " + user)
 				response.writeHead(302, {'Location': "/f/" + location});
 				response.end("Success!");
 			}
@@ -45,7 +48,7 @@ function app(request, response){
 	}
 
 	else {
-		log.info("Request for " + request.url + " by " + request.connection.remoteAddress);
+		log.info("Request for " + request.url + " by " + user);
 		switch(request.url) {
 			case "/":
 			case "/index.html":
