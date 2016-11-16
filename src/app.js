@@ -72,7 +72,7 @@ function app(request, response){
 					}
 				}
 
-				if (/\/f\?\/.+/.test(request.url)) {
+				else if (/\/f\?\/.+/.test(request.url)) {
 					const token = request.url.split("/")[2];
 					const check = database.check(token);
 					if (check) {
@@ -85,7 +85,7 @@ function app(request, response){
 					}
 
 					else {
-						// file_not_found(response, token);
+						file_not_found(response, token);
 					}
 				}
 
