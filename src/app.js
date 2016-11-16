@@ -85,7 +85,7 @@ function app(request, response){
 					}
 
 					else {
-						file_not_found(response, token);
+						// file_not_found(response, token);
 					}
 				}
 
