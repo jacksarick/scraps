@@ -3,8 +3,8 @@
 	"page_root": "./pages/",
 	"database_root": "./db/",
 
+	"use_ssl": false,
 	"ssl": {
-		"secure": true,
 		"key": "cert/private-key.pem",
 		"cert": "cert/public-cert.pem"
 	}
