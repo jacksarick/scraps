@@ -1,9 +1,12 @@
 const config = require("../config.json");
+const log 	 = require("./log.js");
+
 
 const compose  = require("./page-builder.js")(config.page_root);
 const database = require("./database.js")(config.database_root);
 
 function file_not_found(res, file) {
+	log.warn("File not found: " + file);
 	res.writeHead(404, {'Content-Type': 'text/html'});
 	res.end(compose("404.html", {"file": file}));
 }

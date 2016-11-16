@@ -1,5 +1,7 @@
-const fs  = require('fs');
+const fs 	= require('fs');
 const https = require('https');
+const log 	= require("./log.js");
+
 
 const config = require("../config.json");
 const PORT = config.port;
@@ -11,7 +13,7 @@ function server_generator(handler) {
 	};
 
 	return server = https.createServer(options, handler).listen(PORT, function(){
-		console.log("Listening on: https://localhost:" + PORT);
+		log.sys("Listening on: https://localhost:" + PORT);
 	});
 }
 
