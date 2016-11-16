@@ -1,5 +1,5 @@
 const fs  = require('fs');
-const tls = require('tls');
+const https = require('https');
 
 const config = require("../config.json");
 const PORT = config.port;
@@ -10,7 +10,7 @@ function server_generator(handler) {
 		cert: fs.readFileSync(config.ssl.cert)
 	};
 
-	return server = tls.createServer(options, handler).listen(PORT, function(){
+	return server = https.createServer(options, handler).listen(PORT, function(){
 		console.log("Listening on: https://localhost:" + PORT);
 	});
 }
