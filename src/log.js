@@ -14,7 +14,7 @@ const colour = function(clr, string) {
 
 function print(msg) {
 	if (config.loggging == true) {
-		fs.appendFile('beachball-server.log', msg, {'flags': 'a+'}, function(err) {
+		fs.appendFile('beachball-server.log', msg, {'flags': 'wa+'}, function(err) {
 			console.log("ERROR: CAN'T LOG TO FILE, INCLUDING THIS ERROR", err);
 		});
 	}

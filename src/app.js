@@ -45,6 +45,7 @@ function app(request, response){
 	}
 
 	else {
+		log.info("Request for " + request.url + " by " + request.connection.remoteAddress);
 		switch(request.url) {
 			case "/":
 			case "/index.html":
