@@ -8,7 +8,7 @@ function generator(rootdir) {
 		}
 
 		catch (err) {
-			console.log("Couldn't load " + string + " from " + rootdir);
+			sys.err("Couldn't find/access " + string + " from " + rootdir);
 			return "";
 		}
 	}
@@ -22,7 +22,7 @@ function generator(rootdir) {
 		}
 
 		catch(err) {
-			console.log("Couldn't find/access " + filename + " from " + rootdir);
+			sys.err("Couldn't find/access " + filename + " from " + rootdir);
 			return compose("404.html", {"file": filename});
 		}
 	}
