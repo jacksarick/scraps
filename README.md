@@ -2,6 +2,8 @@
 
 Like pastebin, but expiries are based on visits. Say you set expiry to one hour, if no one visits it within an hour, then it goes away. But every time someone visits it, that hour gets renewed. Perfect for all those times a sensitive chunk of text needs to get passed around, but it's hard to co-ordinate exact times.
 
+This project was made in a single weekend, as simple project I could complete in a short time frame.
+
 ## Setup
 
 Setup is dead simple.
@@ -72,4 +74,4 @@ Which would output:
 </div>
 ```
 
-The whole system is designed to be mostly painless an intuitive on the surface. To make any actual changes will require actual code. Sorry. 
+The whole system is designed to be mostly painless and intuitive on the surface. To make any actual changes will require actual code. Sorry. 
