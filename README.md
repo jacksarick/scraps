@@ -22,7 +22,10 @@ If you want HTTPS, run `./gen-cert.sh`, and change `use_ssl` in `config.json` to
 When you make some changes and want to see if your general layout works, run `npm test`. It won't check everything, but it should cover some basics. Yes, I wrote the test in TCL, it's a good language.
 
 ## Customizing
-To change the port, the location of stored text files, or the location of webpages, edit `config.json` as you see fit. SSL should be pretty straight forward, but I haven't done much testing. If you don't like my pages (I'm not exactly a designer, I know), go to the `pages` directory and edit whatever you like. You'll notice a big difference: The server can't handle file requests. No including css files via requests. In exchange, I've implemented an include system. Any file in `<<< >>>` will be "imported". For example:
+To change the port, the location of stored text files, or the location of webpages, edit `config.json` as you see fit. SSL should be pretty straight forward, but I haven't done much testing. The `host` parameter in `config.json` does not actually affect the server, and is only implemented for loggin purposes.
+
+### Editing Pages
+If you don't like my pages (I'm not exactly a designer, I know), go to the `public` directory and edit whatever you like. You'll notice a big difference: The server can't handle file requests. CSS files can be included via requests. As such, I've implemented an include system. Any file in `<<< >>>` will be "imported". For example:
 
 **`main.html`:**
 
