@@ -1,6 +1,6 @@
 {
 	"port": 8080,
-	"page_root": "./pages/",
+	"page_root": "./public/",
 	"database_root": "./db/",
 
 	"logging": true,
