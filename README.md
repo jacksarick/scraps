@@ -9,10 +9,10 @@ This project was made in a single weekend, as simple project I could complete in
 Setup is dead simple.
 
 ```bash
-git clone https://github.com/jacksarick/beachball.git # clone the repo
-cd beachball # go to the folder
-npm install # build the server
-npm test # test your configuration
+git clone https://github.com/jacksarick/beachball.git; # clone the repo
+cd beachball; # go to the folder
+npm install; # build the server
+npm test; # test your configuration
 npm start # start the server
 ```
 
