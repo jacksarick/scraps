@@ -13,7 +13,7 @@ set flag 0
 puts " - reading config.json"
 set config [read [open "./config.json" r]]
 set matchTuples [regexp -all -inline {\"[^\"]+\": ?\"?([^\"| |,]+)} $config]
-lassign $matchTuples _ port _ proot _ dbroot _ usessl _ _ _ key _ cert
+lassign $matchTuples _ host _ port _ proot _ dbroot _ logging _ usessl _ _ _ key _ cert
 
 # check open port
 puts "\n - checking to see if port $port is open"
