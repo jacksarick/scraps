@@ -1,11 +1,12 @@
 {
   "name": "beachball",
-  "version": "1.0.0",
+  "version": "1.0.5",
   "description": "Like pastebin, but expiries are based on visits",
   "main": "app.js",
   "scripts": {
+    "install": "./tools/install.sh",
     "start": "node server.js",
-    "test": "/usr/bin/tclsh test.tcl",
+    "test": "/usr/bin/tclsh tools/test.tcl",
     "start-dev": "nodemon app.js --use-strict"
   },
   "repository": {
