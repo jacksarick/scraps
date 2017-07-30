@@ -11,7 +11,8 @@ Setup is dead simple.
 ```bash
 git clone https://github.com/jacksarick/beachball.git # clone the repo
 cd beachball # go to the folder
-mkdir db # the the database directory
+npm install # build the server
+npm test # test your configuration
 npm start # start the server
 ```
 
