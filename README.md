@@ -2,7 +2,7 @@
 
 Like pastebin, but expiries are based on visits. Say you set expiry to one hour, if no one visits it within an hour, then it goes away. But every time someone visits it, that hour gets renewed. Perfect for all those times a sensitive chunk of text needs to get passed around, but it's hard to co-ordinate exact times.
 
-This project was made in a single weekend, as simple project I could complete in a short time frame.
+This project was made in a single weekend, as simple project I could complete in a short time frame. I have since revisited it to make minor modifications for easier deployment on servers.
 
 ## Setup
 
@@ -18,7 +18,7 @@ npm start # start the server
 
 Boom. Done. Your server is now up, running, and fully configured at <http://localhost:8080>.
 
-If you want HTTPS, run `./gen-cert.sh`, and change `use_ssl` in `config.json` to `true`. It will be self-signed, so you'll need to add `localhost` as an exception for most browsers.
+If you want HTTPS, run `./gen-cert.sh` (or simply select y during installation), and change `use_ssl` in `config.json` to `true`. It will be self-signed, so you'll need to add `localhost` as an exception for most browsers.
 
 When you make some changes and want to see if your general layout works, run `npm test`. It won't check everything, but it should cover some basics. Yes, I wrote the test in TCL, it's a good language.
 
