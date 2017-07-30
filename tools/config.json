@@ -1,0 +1,13 @@
+{
+	"port": 8080,
+	"page_root": "./pages/",
+	"database_root": "./db/",
+
+	"logging": true,
+
+	"use_ssl": false,
+	"ssl": {
+		"key": "cert/private-key.pem",
+		"cert": "cert/public-cert.pem"
+	}
+}
