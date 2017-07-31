@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 const config 	   = require("./config.json");
 const http_server  = require("./src/http-server.js");
 const https_server = require("./src/https-server.js");
