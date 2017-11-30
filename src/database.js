@@ -4,6 +4,16 @@ const log = require("./log.js");
 function database(rootdir) {
 	
 	const filesystem = {
+		check: function(token) {
+			try {
+				const file = fs.readFileSync(rootdir + token, 'utf8');
+			}
+
+			catch(err) {
+					return false;
+			}
+		},
+
 		save: function(content) {
 			const token = Math.random().toString(36).substr(2, 8);
 			const date = Math.floor(Date.now() / 1000);
