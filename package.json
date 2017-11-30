@@ -7,7 +7,7 @@
     "install": "./tools/install.sh",
     "start": "node server.js",
     "test": "/usr/bin/tclsh tools/test.tcl",
-    "start-dev": "nodemon app.js --use-strict"
+    "start-dev": "nodemon server.js --use-strict"
   },
   "repository": {
     "type": "git",
