@@ -1,10 +1,9 @@
-# Beachball⛱
+# Scraps 📌
+A place to collect the scraps of writing
 
-Like pastebin, but expiries are based on visits. Say you set expiry to one hour, if no one visits it within an hour, then it goes away. But every time someone visits it, that hour gets renewed. Perfect for all those times a sensitive chunk of text needs to get passed around, but it's hard to co-ordinate exact times.
+I'm using a lot of the same code I wrote for [Beachball](https://github.com/jacksarick/beachball)
 
-This project was made in a single weekend, as simple project I could complete in a short time frame. I have since revisited it to make minor modifications for easier deployment on servers.
-
-## Setup
+<!-- ## Setup
 
 Setup is dead simple.
 
@@ -83,4 +82,4 @@ Which would output:
 The whole system is designed to be mostly painless and intuitive on the surface. To make any actual changes will require actual code. Sorry. 
 
 ## Maintenance and Usage
-I consider this a completed project, so I do almost no work on it. If you find a bug please let me know, but odds are I won't fix it for a while, if ever. Feel free to submit a pull request, I'll probably accept it if it's good. In the event you start up your own instance, modified or plain, let me know! I'll be excited that someone is using it.
+I consider this a completed project, so I do almost no work on it. If you find a bug please let me know, but odds are I won't fix it for a while, if ever. Feel free to submit a pull request, I'll probably accept it if it's good. In the event you start up your own instance, modified or plain, let me know! I'll be excited that someone is using it. -->

@@ -1,7 +1,7 @@
 {
-  "name": "beachball",
+  "name": "scraps",
   "version": "1.0.5",
-  "description": "Like pastebin, but expiries are based on visits",
+  "description": "A place to collect the scraps of writing",
   "main": "app.js",
   "scripts": {
     "install": "./tools/install.sh",
@@ -11,12 +11,12 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/jacksarick/beachball.git"
+    "url": "git+https://github.com/jacksarick/scraps.git"
   },
   "author": "Jack Sarick",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/jacksarick/beachball/issues"
+    "url": "https://github.com/jacksarick/scraps/issues"
   },
-  "homepage": "https://github.com/jacksarick/beachball#readme"
+  "homepage": "https://github.com/jacksarick/scraps#readme"
 }
