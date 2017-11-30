@@ -1,4 +1,5 @@
 const fs = require("fs");
+const log 	= require("./log.js");
 
 function generator(rootdir) {
 	// Make a function to load a file
@@ -8,7 +9,7 @@ function generator(rootdir) {
 		}
 
 		catch (err) {
-			sys.err("Couldn't find/access " + string + " from " + rootdir);
+			log.err("Couldn't find/access " + string + " from " + rootdir);
 			return "";
 		}
 	}
@@ -22,7 +23,7 @@ function generator(rootdir) {
 		}
 
 		catch(err) {
-			sys.err("Couldn't find/access " + filename + " from " + rootdir);
+			log.err("Couldn't find/access " + filename + " from " + rootdir);
 			return compose("404.html", {"file": filename});
 		}
 	}
