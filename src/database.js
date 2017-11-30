@@ -4,32 +4,11 @@ const log = require("./log.js");
 function database(rootdir) {
 	
 	const filesystem = {
-		check: function(token) {
-			try {
-				const file = fs.readFileSync(rootdir + token, 'utf8');
-				[expiry, date] = file.split("---");
-				[expiry, date] = [expiry.trim() * 1, date.trim() * 1];
-				
-				const now = Math.floor(Date.now() / 1000);
-
-				if ((date + expiry) < now) {
-					fs.unlinkSync(rootdir + token);
-					return false;
-				}
-
-				return expiry / (60 * 60);
-			}
-
-			catch(err) {
-				return false;
-			}
-		},
-
-		save: function(content, expiry) {
+		save: function(content) {
 			const token = Math.random().toString(36).substr(2, 8);
-			const now = Math.floor(Date.now() / 1000);
+			const date = Math.floor(Date.now() / 1000);
 
-			const body = expiry + "\n---\n" + now + "\n---\n" + content;
+			const body = date + "\n---\n" + content;
 
 			try {
 				fs.writeFileSync(rootdir + token, body, 'utf8', {flags: 'wx+'});
@@ -44,7 +23,7 @@ function database(rootdir) {
 
 		load: function(token) {
 			const file = fs.readFileSync(rootdir + token, 'utf8');
-			[expiry, date, content] = file.split("---");
+			[date, content] = file.split("---");
 
 			const now = Math.floor(Date.now() / 1000);
 			const body = expiry + "\n---\n" + now + "\n---\n" + content;
@@ -53,7 +32,7 @@ function database(rootdir) {
 			const args = {
 				"title": token.trim(),
 				"content": content.trim(),
-				"timer": expiry.trim() / (60 * 60)
+				"date": date.trim() / (60 * 60)
 			};
 			
 			return args;
