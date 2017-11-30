@@ -7,6 +7,9 @@ function database(rootdir) {
 		check: function(token) {
 			try {
 				const file = fs.readFileSync(rootdir + token, 'utf8');
+				[date] = file.split("---");
+
+				return date.trim() / (60 * 60);
 			}
 
 			catch(err) {
@@ -34,10 +37,6 @@ function database(rootdir) {
 		load: function(token) {
 			const file = fs.readFileSync(rootdir + token, 'utf8');
 			[date, content] = file.split("---");
-
-			const now = Math.floor(Date.now() / 1000);
-			const body = expiry + "\n---\n" + now + "\n---\n" + content;
-			fs.writeFileSync(rootdir + token, body, 'utf8', {flags: 'wx+'});
 
 			const args = {
 				"title": token.trim(),
