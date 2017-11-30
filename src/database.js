@@ -9,7 +9,7 @@ function database(rootdir) {
 				const file = fs.readFileSync(rootdir + token, 'utf8');
 				[date] = file.split("---");
 
-				return date.trim() / (60 * 60);
+				return date.trim();
 			}
 
 			catch(err) {
@@ -19,7 +19,7 @@ function database(rootdir) {
 
 		save: function(content) {
 			const token = Math.random().toString(36).substr(2, 8);
-			const date = Math.floor(Date.now() / 1000);
+			const date = Date.now().toDateString();
 
 			const body = date + "\n---\n" + content;
 
@@ -41,7 +41,7 @@ function database(rootdir) {
 			const args = {
 				"title": token.trim(),
 				"content": content.trim(),
-				"date": date.trim() / (60 * 60)
+				"date": date.trim()
 			};
 			
 			return args;
