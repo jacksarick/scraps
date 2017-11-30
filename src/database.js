@@ -19,7 +19,7 @@ function database(rootdir) {
 
 		save: function(content) {
 			const token = Math.random().toString(36).substr(2, 8);
-			const date = Date.now().toDateString();
+			const date = new Date().toDateString();
 
 			const body = date + "\n---\n" + content;
 

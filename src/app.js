@@ -24,11 +24,10 @@ function app(request, response){
 
 		request.on('end', function() {
 
-			[content, timer] = body.split("&");
+			[content] = body.split("&");
 			content = content.replace("content=", "").replace(/\+/g, " ");
 			content = decodeURIComponent(content);
-			timer = timer.replace("timer=", "") * 60 * 60;
-			const location = database.save(content, timer);
+			const location = database.save(content);
 			
 			if (location){
 				log.info(location + " made by " + user)
@@ -66,7 +65,6 @@ function app(request, response){
 						const file = database.load(token);
 						if (file) {
 							response.end(compose("text-file.html", file));
-
 						}
 					}
 
@@ -75,22 +73,22 @@ function app(request, response){
 					}
 				}
 
-				else if (/\/f\?\/.+/.test(request.url)) {
-					const token = request.url.split("/")[2];
-					const check = database.check(token);
-					if (check) {
-						const content = {
-							"title": token,
-							"content": `Expires in ${check} hour`
-						};
+				// else if (/\/f\?\/.+/.test(request.url)) {
+				// 	const token = request.url.split("/")[2];
+				// 	const check = database.check(token);
+				// 	if (check) {
+				// 		const content = {
+				// 			"title": token,
+				// 			"date": `written ${date}`
+				// 		};
 
-						response.end(compose("generic.html", content));
-					}
+				// 		response.end(compose("generic.html", content));
+				// 	}
 
-					else {
-						file_not_found(response, token);
-					}
-				}
+				// 	else {
+				// 		file_not_found(response, token);
+				// 	}
+				// }
 
 				else {
 					file_not_found(response, request.url);
