@@ -2,7 +2,7 @@
   "name": "scraps",
   "version": "1.0.5",
   "description": "A place to collect the scraps of writing",
-  "main": "app.js",
+  "main": "server.js",
   "scripts": {
     "install": "./tools/install.sh",
     "start": "node server.js",
