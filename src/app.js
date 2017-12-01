@@ -51,7 +51,10 @@ function app(request, response){
 		switch(request.url) {
 			case "/":
 			case "/index.html":
-				response.end(compose("index.html"));
+				const files = database.index(1).map((file) => {
+					return `<li><a href="./f/${file[0]}">${file[0]}</a>: ${file[1]}</li>`;
+				});
+				response.end(compose("index.html", {"list": files.join("\n")}));
 				break;
 
 			case "/new":
