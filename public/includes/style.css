@@ -2,11 +2,12 @@
 
 body {
 	margin: 0 auto;
-	max-width: 50em;
+	max-width: 40em;
 	line-height: 1.5;
 	padding: 4em 1em;
 	color: #555;
 	font-family: "Helvetica", "Arial", sans-serif;
+	font-size:calc(.75em + .5vw);
 	margin-top: 1em;
 	padding-top: 1em;
 }
@@ -26,4 +27,12 @@ code {
 
 pre {
 	padding: 1em;
+}
+
+ul {
+	list-style-type:"↳";
+}
+
+li {
+	padding-left: 1em;
 }
