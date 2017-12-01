@@ -50,19 +50,11 @@ function database(rootdir) {
 		index: function(lines = 0) {
 			var tokens = fs.readdirSync(rootdir);
 			if (lines){
-				var files = tokens.map([token, this.load(token)]).sort((a, b) => {
+				var tokens = tokens.map((token) => [token, this.load(token)]).sort((a, b) => {
 					return Date(a[1]["date"]) > Date(b[1]["date"])
 				}).map((file) => {
 					return [file[0], file[1]["content"].split("<br>")[0]];
 				});
-
-				// tokens  = tokens
-				// 	.sort((a, b) => {
-
-				// 	})
-				// 	.map((token) => {
-				// 		return [token, this.load(token)["content"].split("<br>")[0]]
-				// 	});
 			}
 
 			return tokens;
