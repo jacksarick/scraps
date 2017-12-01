@@ -25,7 +25,7 @@ code {
 	vertical-align: text-bottom;
 }
 
-pre {
+pre, p {
 	padding: 1em;
 }
 
