@@ -1,6 +1,6 @@
 {
   "name": "scraps",
-  "version": "1.0.5",
+  "version": "1.0",
   "description": "A place to collect the scraps of writing",
   "main": "server.js",
   "scripts": {
