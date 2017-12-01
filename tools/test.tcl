@@ -30,8 +30,8 @@ if {[catch {
 
 # check read/write in db-root
 puts "\n - checking read/write access in $dbroot"
-set test_string "Sphinx of black quartz, judge my vow"
-set filename "test-file.txt"
+set test_string "Mon Jan 1 1990\n---\nSphinx of black quartz, judge my vow"
+set filename "testing"
 set outfile [open [concat $dbroot$filename] w]
 puts $outfile $test_string
 close $outfile
