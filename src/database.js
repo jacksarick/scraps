@@ -45,7 +45,18 @@ function database(rootdir) {
 			};
 			
 			return args;
-		}
+		},
+
+		index: function(lines = 0) {
+			var tokens = fs.readdirSync(rootdir);
+			if (lines){
+				tokens  = tokens.map((token) => {
+					return [token, this.load(token)["content"].split("<br>")[0]]
+				});
+			}
+
+			return tokens;
+		},
 	}
 	
 	return filesystem;
