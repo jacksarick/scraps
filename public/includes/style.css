@@ -18,6 +18,7 @@ h1, h2, strong {
 
 pre {
 	background: #eee;
+	white-space: pre;
 }
 
 code {
