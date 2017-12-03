@@ -16,13 +16,21 @@ h1, h2, strong {
 	color: #333;
 }
 
-code, pre {
+pre {
 	background: #eee;
 }
 
 code {
 	padding: 2px 4px;
 	vertical-align: text-bottom;
+}
+
+a {
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
 }
 
 pre, p {
