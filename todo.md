@@ -1,0 +1,4 @@
+- [ ] Backup cabalities
+- [ ] Unfuck the user input
+- [ ] Hook into Keep?
+- [ ] Security
