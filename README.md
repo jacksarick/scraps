@@ -3,7 +3,7 @@ A place to collect scraps of writing
 
 *After using it for a while, I've decided to revisit this project*
 
-I'm using a lot of the same code I wrote for [Beachball](https://github.com/jacksarick/beachball). As such, the documentation is slim to none on this project, so as not to be redundant. Check beachball for any amount of detail. There ARE differences in the code between the two projects, but nothing drastic. Unless you actually want to spin up your own instance, just go over to Beachball. It really is a better project.
+I'm using a lot of the same code I wrote for [Beachball](https://github.com/jacksarick/beachball). Documentation is one of things on my TODO list, and some of that will be porting it over from Beachball. If you're curious as to how any of it works, I try to leave gratuitous comments
 
 
 ## Setup

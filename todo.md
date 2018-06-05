@@ -1,3 +1,5 @@
+- [ ] Read through code/comment
+- [ ] Write docs
 - [ ] Backup cabalities
 - [ ] Unfuck the user input
 - [ ] Hook into Keep?
