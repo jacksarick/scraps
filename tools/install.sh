@@ -10,7 +10,6 @@ then
     echo "You'll need to manually activate in config.json"
 fi
 
-cd ..
-mkdir db
+mkdir ../db
 
 echo "Done!"
