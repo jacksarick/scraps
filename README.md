@@ -1,5 +1,7 @@
 # Scraps 📌
-A place to collect the scraps of writing
+A place to collect scraps of writing
+
+*After using it for a while, I've decided to revisit this project*
 
 I'm using a lot of the same code I wrote for [Beachball](https://github.com/jacksarick/beachball). As such, the documentation is slim to none on this project, so as not to be redundant. Check beachball for any amount of detail. There ARE differences in the code between the two projects, but nothing drastic. Unless you actually want to spin up your own instance, just go over to Beachball. It really is a better project.
 
