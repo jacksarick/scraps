@@ -1,9 +1,15 @@
+// Load tools
 const fs  = require("fs");
 const log = require("./log.js");
 
+//; Databse object
 function database(rootdir) {
 	
+	//; <database> interaction functions
 	const filesystem = {
+
+		//; Token exits in db?
+		//; token: string -> exits: bool
 		check: function(token) {
 			try {
 				const file = fs.readFileSync(rootdir + token, 'utf8');
@@ -17,6 +23,9 @@ function database(rootdir) {
 			}
 		},
 
+
+		//; Save string to file in db
+		//; content: string -> token: string
 		save: function(content) {
 			const token = Math.random().toString(36).substr(2, 8);
 			const date = new Date().toDateString();
@@ -34,6 +43,8 @@ function database(rootdir) {
 			}
 		},
 
+		//; Load string from token
+		//; token: string -> content: string
 		load: function(token) {
 			const file = fs.readFileSync(rootdir + token, 'utf8');
 			[date, content] = file.split("---");
@@ -47,6 +58,8 @@ function database(rootdir) {
 			return args;
 		},
 
+		//; Return index of tokens (or first n)
+		//; (n: int) -> tokens: [token: string, ...]
 		index: function(lines = 0) {
 			var tokens = fs.readdirSync(rootdir);
 			if (lines){

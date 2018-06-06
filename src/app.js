@@ -1,20 +1,24 @@
+// Load tools
 const config = require("../config.json");
 const log 	 = require("./log.js");
 
-
+// Load modules
 const compose  = require("./page-builder.js")(config.page_root);
 const database = require("./database.js")(config.database_root);
 
+// Simple 404 function
 function file_not_found(res, file) {
 	log.warn("File not found: " + file);
 	res.writeHead(404, {'Content-Type': 'text/html'});
 	res.end(compose("404.html", {"file": file}));
 }
 
+// Primary application
 function app(request, response){
 
 	const user = request.connection.remoteAddress;
 	
+	// Handle user input
 	if (request.method == "POST") {
 		var body;
 
@@ -46,9 +50,13 @@ function app(request, response){
 		});
 	}
 
-	else {
+	// Page routing
+	else { //TODO: Check to see if it is a get request
 		log.info("Request for " + request.url + " by " + user);
+		
+		// Routing
 		switch(request.url) {
+			// Index is assumed
 			case "/":
 			case "/index.html":
 				const files = database.index(1).map((file) => {
@@ -61,6 +69,7 @@ function app(request, response){
 				response.end(compose("new.html"));
 				break;
 
+			// Default behaviour is db lookup
 			default:
 				if (/\/f\/.+/.test(request.url)) {
 					const token = request.url.split("/")[2];
@@ -76,6 +85,7 @@ function app(request, response){
 					}
 				}
 
+				//-{
 				// else if (/\/f\?\/.+/.test(request.url)) {
 				// 	const token = request.url.split("/")[2];
 				// 	const check = database.check(token);
@@ -92,7 +102,10 @@ function app(request, response){
 				// 		file_not_found(response, token);
 				// 	}
 				// }
+				// ^No idea what this code is
+				//}-
 
+				// If it can't be accessed for any reason, 404
 				else {
 					file_not_found(response, request.url);
 				}
