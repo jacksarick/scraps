@@ -4,7 +4,8 @@
 	"page_root": "./public/",
 	"database_root": "./db/",
 
-	"logging": true,
+	"logging": false,
+	"log_file": "./scraps-activity.log",
 
 	"use_ssl": false,
 	"ssl": {
