@@ -13,7 +13,7 @@ set flag 0
 puts " - reading config.json"
 set config [read [open "./config.json" r]]
 set matchTuples [regexp -all -inline {\"[^\"]+\": ?\"?([^\"| |,]+)} $config]
-lassign $matchTuples _ host _ port _ proot _ dbroot _ logging _ usessl _ _ _ key _ cert
+lassign $matchTuples _ host _ port _ proot _ dbroot _ logging logfile _ usessl _ _ _ key _ cert
 
 # check open port
 puts "\n - checking to see if port $port is open"
@@ -55,10 +55,22 @@ if {[exits $proot$index]} {
 	set flag 1
 }
 
+# check log file
+puts "\n - checking log file"
+if {$logging == "true"} {
+	if {[exits $logfile]} {
+		puts " √ log file exits"
+	} else {
+		puts " - log file does not yet exist ("
+	}
+} else {
+	puts " ~ skipped log file check"
+}
+
 # ask if we should check ssl certs
 puts "\n ? check ssl certificate? \[y/n\]"
 set confirm [gets stdin]
-if {$confirm == y} {
+if {$confirm == y || $usessl == "true"} {
 	puts " - checking ssl certificate"
 	if {[exits $key] && [exits $cert]} {
 		
@@ -76,6 +88,8 @@ if {$confirm == y} {
 	} else {
 		puts " X missing key/cert pair. Generate local ones with ./gen-cert.sh"
 	}
+} else {
+	puts " ~ skipped ssl file check"
 }
 
 # general diagnostic
