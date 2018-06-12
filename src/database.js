@@ -43,19 +43,17 @@ function database(rootdir) {
 			}
 		},
 
-		//; Load string from token
-		//; token: string -> content: string
+		//; Load file from token
+		//; token: string -> {title, content, date}: string
 		load: function(token) {
 			const file = fs.readFileSync(rootdir + token, 'utf8');
 			[date, content] = file.split("---");
 
-			const args = {
+			return {
 				"title": token.trim(),
 				"content": content.trim(),
 				"date": date.trim()
 			};
-			
-			return args;
 		},
 
 		//; Return index of tokens (or first n)
