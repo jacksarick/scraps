@@ -1,8 +1,14 @@
-const fs = require("fs");
-const log 	= require("./log.js");
+//; Page building tools
 
+const fs  = require("fs");
+const log = require("./log.js");
+
+//; Generate static pages from simple markup
+//; directory: string -> generator: func
 function generator(rootdir) {
-	// Make a function to load a file
+	//; Load a file from string
+	//; nil: _, file: string -> composed: string
+	//; internal to <generator>
 	const load_file = function(_, string) {
 		try {
 			return compose(string.trim(), 'utf8');
@@ -14,7 +20,8 @@ function generator(rootdir) {
 		}
 	}
 
-	// The generator function that loads files from root dir
+	//; The generator function that loads files from root dir
+	//; filename: string, {sub, ...}: string -> composed: string
 	const compose = function (filename, substitutions) {
 		try {
 			return fs.readFileSync(rootdir + filename.trim(), 'utf8')
