@@ -1,3 +1,5 @@
+//; Primary handler and application
+
 // Load tools
 const config = require("../config.json");
 const log 	 = require("./log.js");

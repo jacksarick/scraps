@@ -1,3 +1,4 @@
+//; Logging functions
 const fs = require('fs');
 const config = require("../config.json");
 
@@ -12,9 +13,10 @@ const colour = function(clr, string) {
 	return colours[clr] + string + "\x1b[0m"
 }
 
+//; Print function that copies to log
 function print(msg) {
 	if (config.loggging == true) {
-		fs.appendFile('beachball-server.log', msg, {'flags': 'wa+'}, function(err) {
+		fs.appendFile('scraps-server.log', msg, {'flags': 'wa+'}, function(err) {
 			console.log("ERROR: CAN'T LOG TO FILE, INCLUDING THIS ERROR", err);
 		});
 	}

@@ -1,3 +1,5 @@
+//; Database interaction tools
+
 // Load tools
 const fs  = require("fs");
 const log = require("./log.js");
