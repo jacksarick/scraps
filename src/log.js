@@ -16,8 +16,8 @@ const colour = function(clr, string) {
 //; Print function that copies to log
 //; message: obj -> worked: bool
 function print(msg) {
-	if (config.loggging == true) {
-		fs.appendFile(config.log_file, msg, {'flags': 'wa+'}, function(err) {
+	if (config.logging == true) {
+		fs.appendFile(config.log_file, msg, {'flags': 'a+'}, function(err) {
 			console.log("ERROR: CAN'T LOG TO FILE, INCLUDING THIS ERROR", err);
 			return false;
 		});
