@@ -1,4 +1,4 @@
-- [ ] Read through code/comment
+- [x] Read through code/comment
 - [ ] Write docs
 - [ ] Backup cabalities
 - [ ] Logging
