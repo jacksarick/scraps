@@ -17,33 +17,31 @@ const colour = function(clr, string) {
 //; message: obj -> worked: bool
 function print(msg) {
 	if (config.logging == true) {
-		fs.appendFile(config.log_file, msg, {'flags': 'a+'}, function(err) {
+		fs.appendFile(config.log_file, msg, {'flags': 'ra+'}, function(err) {
 			console.log("ERROR: CAN'T LOG TO FILE, INCLUDING THIS ERROR", err);
-			return false;
 		});
 	}
 
 	console.log(msg);
-	return true;
 }
 
 //; General log function
 //; message: obj -> worked:bool
 const log = {
 	sys: function(msg) {
-		return print(colour("blue", " SYS: " + msg));
+		print(colour("blue", " SYS: " + msg));
 	},
 
 	info: function(msg) {
-		return print("INFO: " + msg);
+		print("INFO: " + msg);
 	},
 
 	err: function(msg) {
-		return print(colour("red", " ERR: " + msg));
+		print(colour("red", " ERR: " + msg));
 	},
 
 	warn: function(msg) {
-		return print(colour("yellow", "WARN: " + msg));
+		print(colour("yellow", "WARN: " + msg));
 	},
 }
 
