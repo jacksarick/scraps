@@ -1,12 +1,17 @@
+//; Simple https server generator
+
+//Load tools
 const fs 	= require('fs');
 const https = require('https');
 const log 	= require("./log.js");
 
-
+// Import config
 const config = require("../config.json");
 const HOST = config.host;
 const PORT = config.port;
 
+//; Simple https server
+//; handler: func -> server: func
 function server_generator(handler) {
 	const options = {
 		key: fs.readFileSync(config.ssl.key),
