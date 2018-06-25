@@ -18,5 +18,8 @@
   "bugs": {
     "url": "https://github.com/jacksarick/scraps/issues"
   },
-  "homepage": "https://github.com/jacksarick/scraps#readme"
+  "homepage": "https://github.com/jacksarick/scraps#readme",
+  "dependencies": {
+    "npm": "^6.1.0"
+  }
 }

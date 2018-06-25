@@ -4,44 +4,49 @@ const config = require("../config.json");
 
 const colour = function(clr, string) {
 	const colours = {
-		"red"	: "\x1b[31m",
-		"yellow": "\x1b[33m",
-		"blue"	: "\x1b[34m",
-		"green"	: "\x1b[32m"
+		"default": "\x1b[39m",
+		"red"	 : "\x1b[31m",
+		"yellow" : "\x1b[33m",
+		"blue"	 : "\x1b[34m",
+		"green"	 : "\x1b[32m"
 	}
 
 	return colours[clr] + string + "\x1b[0m"
 }
 
 //; Print function that copies to log
-//; message: obj -> worked: bool
-function print(msg) {
+//; message: obj -> nil
+function print(msg, clr) {
+	msg = new Date().toLocaleString('en-GB') + msg
+
 	if (config.logging == true) {
-		fs.appendFile(config.log_file, msg, {'flags': 'a+'}, function(err) {
-			console.log("FAIL: CAN'T LOG TO FILE, INCLUDING THIS ERROR", err);
+		fs.appendFile(config.log_file, msg + "\n", {'flags': 'a+'}, (err) => {
+			if (err) {
+				console.log("FAIL: CAN'T LOG TO FILE, INCLUDING THIS ERROR", err);
+			}
 		});
 	}
 
-	console.log(msg);
+	console.log(colour(clr, msg));
 }
 
 //; General log function
 //; message: obj -> worked:bool
 const log = {
 	sys: function(msg) {
-		print(colour("blue", " SYS: " + msg));
+		print(" SYS: " + msg, "blue");
 	},
 
 	info: function(msg) {
-		print("INFO: " + msg);
+		print(" INFO: " + msg, "default");
 	},
 
 	err: function(msg) {
-		print(colour("red", " ERR: " + msg));
+		print(" ERR: " + msg, "red");
 	},
 
 	warn: function(msg) {
-		print(colour("yellow", "WARN: " + msg));
+		print(" WARN: " + msg, "yellow");
 	},
 }
 
